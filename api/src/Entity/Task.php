@@ -53,7 +53,7 @@ class Task
         max: 150,
         maxMessage: 'Task name cannot be longer than 150 characters.',
     )]
-    #[Groups(['task:read'])]
+    #[Groups(['task:read', 'task:write'])]
     private ?string $name = null;
 
     #[ORM\Column]
