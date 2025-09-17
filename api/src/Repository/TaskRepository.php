@@ -16,14 +16,6 @@ class TaskRepository extends ServiceEntityRepository
         parent::__construct($registry, Task::class);
     }
 
-    public function findAllOrderedByPosition(): array
-    {
-        return $this->createQueryBuilder('t')
-            ->orderBy('t.position', 'ASC')
-            ->getQuery()
-            ->getResult();
-    }
-
     public function getNextPosition(): int
     {
         $maxPosition = $this->createQueryBuilder('t')
@@ -48,11 +40,11 @@ class TaskRepository extends ServiceEntityRepository
     {
         $entityManager = $this->getEntityManager();
 
-        if ($fromPosition > $toPosition) {
+        if ($fromPosition < $toPosition) {
             $entityManager->createQuery(
                 'UPDATE App\Entity\Task t
                 SET t.position = t.position -1
-                WHERE t.position > :fromPosition AND t.position < :toPosition'
+                WHERE t.position > :fromPosition AND t.position <= :toPosition'
             )
                 ->setParameter('fromPosition', $fromPosition)
                 ->setParameter('toPosition', $toPosition)

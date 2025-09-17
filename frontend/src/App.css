@@ -1,42 +1,159 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.drag-handle {
+    user-select: none;
+    touch-action: none;
+    transition: color 0.2s ease;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drag-handle:hover {
+    color: #0d6efd !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.task-name {
+    transition: all 0.2s ease;
+}
+
+.task-name:hover {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: -2px -4px;
 }
 
 .card {
-  padding: 2em;
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+    border-color: #0d6efd;
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.sortable-ghost {
+    opacity: 0.3;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: #86b7fe;
+}
+
+@media (max-width: 576px) {
+    .drag-handle {
+        font-size: 1.5rem !important;
+        padding: 0.25rem;
+    }
+
+    .task-name {
+        font-size: 0.95rem;
+    }
+
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+.task-list {
+    transition: all 0.3s ease;
+}
+
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #4054bd 0%, #efefef 100%);
+    color: white;
+    border: none;
+}
+
+.text-primary {
+    color: #667eea !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-1px);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card.new-task {
+    animation: slideIn 0.3s ease-out;
+}
+
+.small.text-muted {
+    font-size: 0.8rem;
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.15);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .card-body {
+        padding: 1rem 0.75rem;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
 }
